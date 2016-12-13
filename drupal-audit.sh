@@ -21,6 +21,10 @@ echo "<html>
 <head>
 	<title>Drupal Audit : $ENVIRONMENT : $TODAY</title>
 <style>
+* {
+padding: 10px;
+}
+
 pre {
 	display: block;
         padding: 0.5em 1em;
@@ -47,7 +51,7 @@ p {
 
 	<h1>Drupal Audit : $ENVIRONMENT : $TODAY</h1>
 
-	<img src='https://s3.amazonaws.com/public-jacob/misc/drupal_logo.png' alt='Drupal Logo' height="50%" >
+	<img src='https://s3.amazonaws.com/public-jacob/misc/drupal_logo.png' alt='Drupal Logo' height="18%" >
 
 	<p>by: $USER </p>
 
