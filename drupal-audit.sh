@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export DRUSH_ALIAS=$1
+export AHT=$2
 
 export ENVIRONMENT=`echo "$1" | sed -e 's/@//g'`
 
@@ -64,7 +65,12 @@ echo "<p>
 </p>" >> $REPORT
 echo "<pre>" >> $REPORT
 
-	drush $DRUSH_ALIAS status-report | tee -a $REPORT
+	if test "$AHT" != ''
+	then
+		aht $DRUSH_ALIAS drush status-report | tee -a $REPORT
+	else
+		drush $DRUSH_ALIAS status-report | tee -a $REPORT
+	fi
 
 echo "</pre>" >> $REPORT
 ###
@@ -78,7 +84,12 @@ echo "<p>
 </p>" >> $REPORT
 echo "<pre>" >> $REPORT
 
-	drush $DRUSH_ALIAS updatedb-status | tee -a $REPORT
+	if test "$AHT" != ''
+	then
+		aht $DRUSH_ALIAS drush updatedb-status | tee -a $REPORT
+	else
+		drush $DRUSH_ALIAS updatedb-status | tee -a $REPORT
+	fi
 
 echo "</pre>" >> $REPORT
 ###
@@ -92,7 +103,12 @@ echo "<p>
 </p>" >> $REPORT
 echo "<pre>" >> $REPORT
 
-	drush $DRUSH_ALIAS locale-check | tee -a $REPORT
+	if test "$AHT" != ''
+	then
+		aht $DRUSH_ALIAS drush locale-check | tee -a $REPORT
+	else
+		drush $DRUSH_ALIAS locale-check | tee -a $REPORT
+	fi
 
 echo "</pre>" >> $REPORT
 ###
@@ -108,7 +124,12 @@ echo "<p>
 </p>" >> $REPORT
 echo "<pre>" >> $REPORT
 
-	drush $DRUSH_ALIAS pm-updatestatus | tee -a $REPORT
+	if test "$AHT" != ''
+	then
+		aht $DRUSH_ALIAS drush pm-updatestatus | tee -a $REPORT
+	else
+		drush $DRUSH_ALIAS pm-updatestatus | tee -a $REPORT
+	fi
 
 echo "</pre>" >> $REPORT
 ###
@@ -122,7 +143,12 @@ echo "<p>
 </p>" >> $REPORT
 echo "<pre>" >> $REPORT
 
+	if test "$AHT" != ''
+	then
+		aht $DRUSH_ALIAS drush search-status | tee -a $REPORT
+	else
 	drush $DRUSH_ALIAS search-status | tee -a $REPORT
+	fi
 
 echo "</pre>" >> $REPORT
 ###
@@ -136,7 +162,12 @@ echo "<p>
 </p>" >> $REPORT
 echo "<pre>" >> $REPORT
 
-	drush $DRUSH_ALIAS views-analyze | tee -a $REPORT
+	if test "$AHT" != ''
+	then
+		aht $DRUSH_ALIAS drush views-analyze | tee -a $REPORT
+	else
+		drush $DRUSH_ALIAS views-analyze | tee -a $REPORT
+	fi
 
 echo "</pre>" >> $REPORT
 ###
@@ -150,7 +181,12 @@ echo "<p>
 </p>" >> $REPORT
 echo "<pre>" >> $REPORT
 
-	drush $DRUSH_ALIAS watchdog-show | tee -a $REPORT
+	if test "$AHT" != ''
+	then
+		aht $DRUSH_ALIAS drush watchdog-show | tee -a $REPORT
+	else
+		drush $DRUSH_ALIAS watchdog-show | tee -a $REPORT
+	fi
 
 echo "</pre>" >> $REPORT
 ###
@@ -164,7 +200,12 @@ echo "<p>
 </p>" >> $REPORT
 echo "<pre>" >> $REPORT
 
-	drush $DRUSH_ALIAS cacheaudit | tee -a $REPORT
+	if test "$AHT" != ''
+	then
+		aht $DRUSH_ALIAS drush cacheaudit | tee -a $REPORT
+	else
+		drush $DRUSH_ALIAS cacheaudit | tee -a $REPORT
+	fi
 
 echo "</pre>" >> $REPORT
 ###
@@ -178,10 +219,13 @@ echo "</body>
 
 
 # DONE
-echo '
+echo "
+________________________________________________________________________
 
+		=] 	Report is ready @ $REPORT	
 
-		=] 	Report is ready @ $REPORT	'
+"
+	open $REPORT
 
 
 
