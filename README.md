@@ -11,16 +11,21 @@ This should work for Drupal 7 & 8*
 
 ## Usage
 ### With Drush Aliases
-`
-./drupal-audit.sh @wabee2.prod
-`
+```
+	git clone git@github.com:jacov/drupal-audit.git
+	cd drupal-audit
+	./drupal-audit.sh @site.prod
+	./drupal-audit.sh @site.dev
+```
 
 ### Without Drush Aliases 
-`
-cd <drupal_path>
-./drupal-audit.sh
-`
-* Note: if you are running without Drush Aliases, make sure to clean up output dir, or set it to a different location
+```
+	cd <drupal_path>
+	git clone git@github.com:jacov/drupal-audit.git
+	cd drupal-audit
+	./drupal-audit.sh
+```
+* Note: if you are running without Drush Aliases, make sure to clean up output dir, or set it to a different location within the drupal-audit.sh. In the future i will put this in a config file.
 
 
 ![Alt](https://s3.amazonaws.com/public-jacob/misc/drupal_logo.png "Drupal")
